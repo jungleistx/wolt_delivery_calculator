@@ -30,11 +30,11 @@ https://github.com/woltapp/engineering-internship-2024
 > ```bash
 > python3 main.py
 > ```
-> - this will start the application, you should see something similar to this
+> - this will start the application, you should see something similar to this:
 
-<p align="center" border="none">
-  <img alt="terminal_view" src="img/terminal_view.png" align="center">
-</p>
+> <p align="center" border="none">
+>  <img alt="terminal_view" src="img/terminal_view.png" align="center">
+> </p>
 
 
 ### 4. Open your favourite browser:
