@@ -23,6 +23,9 @@ def get_delivery_fee(cart_details:json) -> json:
 	if is_rushhour(cart_details['time']):
 		delivery_fee *= DELIVERY_FEE_RUSH_MULTIPLIER
 
+	if delivery_fee > MAX_DELIVERY_FEE:
+		delivery_fee = MAX_DELIVERY_FEE
+
 	return {"delivery_fee": delivery_fee}
 
 
