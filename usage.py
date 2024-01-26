@@ -11,6 +11,7 @@ def wrong_method():
 </table>
 '''
 
+
 def invalid_input():
 	return '''
 Invalid input!
