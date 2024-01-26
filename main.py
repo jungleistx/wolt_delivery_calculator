@@ -45,18 +45,6 @@ def is_rushhour(time:str) -> bool:
 	return False
 
 
-def usage_invalid_input():
-	return '''
-Invalid input!
-Make sure that you POST the following attributes:
-	content-type: application/json
-	\'cart_value\': integer
-	\'delivery_distance\': integer
-	\'number_of_items\': integer
-	\'time\': string
-'''
-
-
 if __name__ == '__main__':
 	app.run(port=8000, debug=True)
 
