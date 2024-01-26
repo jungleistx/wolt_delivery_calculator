@@ -1,13 +1,27 @@
 import json
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from datetime import datetime
 
 FREE_DELIVERY_LIMIT = 20000
 MAX_DELIVERY_FEE = 1500
 DELIVERY_FEE_RUSH_MULTIPLIER = 1.2
 
+app = Flask(__name__)
 
-def main():
+@app.route('/')
+def usage_get_method():
+	return '''
+<p>Calculate delivery fee:</p>
+<table>
+	<tr><td>METHOD</td> <td>POST</td></tr>
+	<tr><td>content-type</td> <td>application/json</td></tr>
+	<tr><td>\'cart_value\'</td> <td>integer</td></tr>
+	<tr><td>\'delivery_distance\'</td> <td>integer</td></tr>
+	<tr><td>\'number_of_items\'</td> <td>integer</td></tr>
+	<tr><td>\'time\'</td> <td>string</td></tr>
+</table>
+'''
+
 
 	cart = json.dumps({"cart_value": 790, "delivery_distance": 2235, "number_of_items": 4, "time": "2024-01-15T13:00:00Z"})
 	print(get_delivery_fee(cart))
