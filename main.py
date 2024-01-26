@@ -28,6 +28,9 @@ def usage_get_method():
 def calculate_delivery_fee():
 	cart_details = request.json
 
+	if not validate_cart_details(cart_details):
+		return usage_invalid_input()
+
 	delivery_fee = 0
 
 	return jsonify({'delivery_fee': delivery_fee})
@@ -45,15 +48,22 @@ Make sure that you POST the following attributes:
 '''
 
 
-def validate_cart_details(cart_details:dict) -> bool:
-	if not cart_details:
-		return False
-
+def validate_cart_keys(cart_details:dict) -> bool:
 	keys_to_check = ['cart_value', 'delivery_distance', 'number_of_items', 'time']
 	for key in keys_to_check:
 		if key not in cart_details:
 			return False
 	return True
+
+
+def validate_cart_details(cart_details:dict) -> bool:
+	if not cart_details:
+		return False
+	if not validate_cart_keys(cart_details):
+		return False
+
+	return True
+
 
 if __name__ == '__main__':
 	app.run(port=8000, debug=True)
