@@ -48,6 +48,9 @@ def calculate_delivery_fee():
 	if is_rushhour(cart_details['time']):
 		delivery_fee *= DELIVERY_FEE_RUSH_MULTIPLIER
 
+	if delivery_fee > MAX_DELIVERY_FEE:
+		delivery_fee = MAX_DELIVERY_FEE
+
 	return jsonify({'delivery_fee': delivery_fee})
 
 
