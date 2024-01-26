@@ -142,69 +142,23 @@ if __name__ == '__main__':
 	app.run(port=8000, debug=True)
 
 
+# normal 710
 # curl -X POST -H "Content-type: application/json" -d "{\"cart_value\": 790, \"delivery_distance\": 2235, \"number_of_items\": 4, \"time\": \"2024-01-15T13:00:00Z\"}" "localhost:8000"
 
+# normal 300
+# curl -X POST -H "Content-type: application/json" -d "{\"cart_value\": 7290, \"delivery_distance\": 200, \"number_of_items\": 6, \"time\": \"2024-01-15T13:00:00Z\"}" "localhost:8000"
 
-def get_delivery_fee(cart_details:json) -> json:
-	delivery_fee = 0
+# normal 1500
+# curl -X POST -H "Content-type: application/json" -d "{\"cart_value\": 19900, \"delivery_distance\": 6200, \"number_of_items\": 13, \"time\": \"2024-01-19T18:00:00Z\"}" "localhost:8000"
 
-	if check_free_delivery(cart_details['cart_value']):
-		return jsonify({"delivery_fee": delivery_fee})
+# normal 0
+# curl -X POST -H "Content-type: application/json" -d "{\"cart_value\": 20460, \"delivery_distance\": 200, \"number_of_items\": 6, \"time\": \"2024-01-15T13:00:00Z\"}" "localhost:8000"
 
-	delivery_fee += calculate_delivery_surcharge(cart_details['cart_value'])
-	delivery_fee += calculate_delivery_distance(cart_details['delivery_distance'])
-	delivery_fee += calculate_delivery_items(cart_details['number_of_items'])
+# rush hour + normal 852.0
+# curl -X POST -H "Content-type: application/json" -d "{\"cart_value\": 790, \"delivery_distance\": 2235, \"number_of_items\": 4, \"time\": \"2024-01-19T16:00:00Z\"}" "localhost:8000"
 
-	if is_rushhour(cart_details['time']):
-		delivery_fee *= DELIVERY_FEE_RUSH_MULTIPLIER
+# negative value in cart_value
+# curl -X POST -H "Content-type: application/json" -d "{\"cart_value\": -1, \"delivery_distance\": 2235, \"number_of_items\": 4, \"time\": \"2024-01-15T13:00:00Z\"}" "localhost:8000"
 
-	if delivery_fee > MAX_DELIVERY_FEE:
-		delivery_fee = MAX_DELIVERY_FEE
-
-	return jsonify({"delivery_fee": delivery_fee})
-
-
-def check_free_delivery(cart_value:int) -> bool:
-	if cart_value >= FREE_DELIVERY_LIMIT:
-		return True
-	return False
-
-
-def calculate_delivery_surcharge(cart_value:int) -> int:
-	if cart_value < 1000:
-		return 1000 - cart_value
-	return 0
-
-
-def calculate_delivery_distance(distance:int) -> int:
-	delivery_distance_fee = 100 # minimum fee is 1e
-
-	distance -= 500
-	while distance >= 0:
-		delivery_distance_fee += 100
-		distance -= 500
-
-	return delivery_distance_fee
-
-
-def calculate_delivery_items(items:int) -> int:
-	delivery_fee = 0
-
-	if items >= 5:
-		delivery_fee = (items - 4) * 50
-
-		if items >= 12:
-			delivery_fee += 120
-
-	return delivery_fee
-
-
-def is_rushhour(time:str) -> bool:
-	delivery_date = datetime.fromisoformat(time)
-
-	if delivery_date.isoweekday() == 5:
-		if delivery_date.hour >= 15 and delivery_date.hour <= 19:
-			return True
-
-	return False
-
+# wrong type in cart_value (str)
+# curl -X POST -H "Content-type: application/json" -d "{\"cart_value\": \"790\", \"delivery_distance\": 2235, \"number_of_items\": 4, \"time\": \"2024-01-15T13:00:00Z\"}" "localhost:8000"
