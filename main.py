@@ -7,6 +7,10 @@ MAX_DELIVERY_FEE = 1500
 DELIVERY_FEE_RUSH_MULTIPLIER = 1.2
 MINIMUM_CART_VALUE = 1000
 BASE_DELIVERY_FEE = 200
+EXTRA_ITEM_SURCHARGE = 50
+EXTRA_ITEMS_BULK_FEE = 120
+ITEM_LIMIT = 4
+BULK_ITEM_LIMIT = 12
 
 app = Flask(__name__)
 
@@ -38,8 +42,20 @@ def calculate_delivery_fee():
 
 	delivery_fee += calculate_delivery_surcharge(cart_details['cart_value'])
 	delivery_fee += calculate_delivery_distance(cart_details['delivery_distance'])
+	delivery_fee += calculate_delivery_items(cart_details['number_of_items'])
 
 	return jsonify({'delivery_fee': delivery_fee})
+
+
+def calculate_delivery_items(items:int) -> int:
+	delivery_items_fee = 0
+
+	if items > ITEM_LIMIT:
+		delivery_items_fee = (items - ITEM_LIMIT) * EXTRA_ITEM_SURCHARGE
+		if items > BULK_ITEM_LIMIT:
+			delivery_items_fee += EXTRA_ITEMS_BULK_FEE
+
+	return delivery_items_fee
 
 
 def calculate_delivery_distance(distance:int) -> int:
