@@ -31,4 +31,15 @@ def calculate_delivery_surcharge(cart_value:int) -> int:
 		return 1000 - cart_value
 	return 0
 
+
+def calculate_delivery_distance(distance:int) -> int:
+	delivery_distance_fee = 100 # minimum fee is 1e
+
+	distance -= 500
+	while distance >= 0:
+		delivery_distance_fee += 100
+		distance -= 500
+
+	return delivery_distance_fee
+
 main()
