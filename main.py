@@ -1,4 +1,5 @@
-import json, validation
+import validation
+import json
 from flask import Flask, jsonify, request
 from datetime import datetime
 
