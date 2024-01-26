@@ -45,6 +45,16 @@ Make sure that you POST the following attributes:
 '''
 
 
+def validate_cart_details(cart_details:dict) -> bool:
+	if not cart_details:
+		return False
+
+	keys_to_check = ['cart_value', 'delivery_distance', 'number_of_items', 'time']
+	for key in keys_to_check:
+		if key not in cart_details:
+			return False
+	return True
+
 if __name__ == '__main__':
 	app.run(port=8000, debug=True)
 
