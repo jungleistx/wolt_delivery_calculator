@@ -5,12 +5,13 @@ from datetime import datetime
 FREE_DELIVERY_LIMIT = 20000
 MAX_DELIVERY_FEE = 1500
 DELIVERY_FEE_RUSH_MULTIPLIER = 1.2
+MINIMUM_CART_VALUE = 1000
 
 app = Flask(__name__)
 
 
 @app.route('/')
-def usage_get_method():
+def usage_wrong_method():
 	return '''
 <p>Calculate delivery fee:</p>
 <table>
@@ -34,7 +35,15 @@ def calculate_delivery_fee():
 	if check_free_delivery(cart_details['cart_value']):
 		return jsonify({"delivery_fee": delivery_fee})
 
+	delivery_fee += calculate_delivery_surcharge(cart_details['cart_value'])
+
 	return jsonify({'delivery_fee': delivery_fee})
+
+
+def calculate_delivery_surcharge(cart_value:int) -> int:
+	if cart_value < MINIMUM_CART_VALUE:
+		return MINIMUM_CART_VALUE - cart_value
+	return 0
 
 
 def check_free_delivery(cart_value:int) -> bool:
