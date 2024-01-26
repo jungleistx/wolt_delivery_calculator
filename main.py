@@ -24,6 +24,15 @@ def usage_get_method():
 '''
 
 
+@app.route('/', methods=['POST'])
+def calculate_delivery_fee():
+	cart_details = request.json
+
+	delivery_fee = 0
+
+	return jsonify({'delivery_fee': delivery_fee})
+
+
 def usage_invalid_input():
 	return '''
 Invalid input!
