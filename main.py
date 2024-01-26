@@ -11,6 +11,7 @@ EXTRA_ITEM_SURCHARGE = 50
 EXTRA_ITEMS_BULK_FEE = 120
 ITEM_LIMIT = 4
 BULK_ITEM_LIMIT = 12
+ISO_FRIDAY = 5
 
 app = Flask(__name__)
 
@@ -44,7 +45,19 @@ def calculate_delivery_fee():
 	delivery_fee += calculate_delivery_distance(cart_details['delivery_distance'])
 	delivery_fee += calculate_delivery_items(cart_details['number_of_items'])
 
+	if is_rushhour(cart_details['time']):
+		delivery_fee *= DELIVERY_FEE_RUSH_MULTIPLIER
+
 	return jsonify({'delivery_fee': delivery_fee})
+
+
+def is_rushhour(time:str) -> bool:
+	delivery_date = datetime.fromisoformat(time)
+
+	if delivery_date.isoweekday() == ISO_FRIDAY:
+		if delivery_date.hour >= 15 and delivery_date.hour < 19:
+			return True
+	return False
 
 
 def calculate_delivery_items(items:int) -> int:
