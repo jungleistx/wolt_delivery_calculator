@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 
 FREE_DELIVERY_LIMIT = 20000
 MAX_DELIVERY_FEE = 1500
@@ -18,6 +19,9 @@ def get_delivery_fee(cart_details:json) -> json:
 	delivery_fee += calculate_delivery_surcharge(cart_details['cart_value'])
 	delivery_fee += calculate_delivery_distance(cart_details['delivery_distance'])
 	delivery_fee += calculate_delivery_items(cart_details['number_of_items'])
+
+	if is_rushhour(cart_details['time']):
+		delivery_fee *= DELIVERY_FEE_RUSH_MULTIPLIER
 
 	return {"delivery_fee": delivery_fee}
 
@@ -55,6 +59,16 @@ def calculate_delivery_items(items:int) -> int:
 			delivery_fee += 120
 
 	return delivery_fee
+
+
+def is_rushhour(time:str) -> bool:
+	delivery_date = datetime.fromisoformat(time)
+
+	if delivery_date.isoweekday() == 5:
+		if delivery_date.hour >= 15 and delivery_date.hour <= 19:
+			return True
+
+	return False
 
 
 main()
