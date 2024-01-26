@@ -1,4 +1,5 @@
 import json
+from flask import Flask, jsonify
 from datetime import datetime
 
 FREE_DELIVERY_LIMIT = 20000
@@ -7,14 +8,16 @@ DELIVERY_FEE_RUSH_MULTIPLIER = 1.2
 
 
 def main():
-	get_delivery_fee()
+
+	cart = json.dumps({"cart_value": 790, "delivery_distance": 2235, "number_of_items": 4, "time": "2024-01-15T13:00:00Z"})
+	print(get_delivery_fee(cart))
 
 
 def get_delivery_fee(cart_details:json) -> json:
 	delivery_fee = 0
 
 	if check_free_delivery(cart_details['cart_value']):
-		return {"delivery_fee": delivery_fee}
+		return jsonify({"delivery_fee": delivery_fee})
 
 	delivery_fee += calculate_delivery_surcharge(cart_details['cart_value'])
 	delivery_fee += calculate_delivery_distance(cart_details['delivery_distance'])
@@ -26,7 +29,7 @@ def get_delivery_fee(cart_details:json) -> json:
 	if delivery_fee > MAX_DELIVERY_FEE:
 		delivery_fee = MAX_DELIVERY_FEE
 
-	return {"delivery_fee": delivery_fee}
+	return jsonify({"delivery_fee": delivery_fee})
 
 
 def check_free_delivery(cart_value:int) -> bool:
