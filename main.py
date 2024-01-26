@@ -8,6 +8,7 @@ DELIVERY_FEE_RUSH_MULTIPLIER = 1.2
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def usage_get_method():
 	return '''
@@ -23,8 +24,23 @@ def usage_get_method():
 '''
 
 
-	cart = json.dumps({"cart_value": 790, "delivery_distance": 2235, "number_of_items": 4, "time": "2024-01-15T13:00:00Z"})
-	print(get_delivery_fee(cart))
+def usage_invalid_input():
+	return '''
+Invalid input!
+Make sure that you POST the following attributes:
+	content-type: application/json
+	\'cart_value\': integer
+	\'delivery_distance\': integer
+	\'number_of_items\': integer
+	\'time\': string
+'''
+
+
+if __name__ == '__main__':
+	app.run(port=8000, debug=True)
+
+
+# curl -X POST -H "Content-type: application/json" -d "{\"cart_value\": 790, \"delivery_distance\": 2235, \"number_of_items\": 4, \"time\": \"2024-01-15T13:00:00Z\"}" "localhost:8000"
 
 
 def get_delivery_fee(cart_details:json) -> json:
@@ -90,5 +106,3 @@ def is_rushhour(time:str) -> bool:
 
 	return False
 
-
-main()
