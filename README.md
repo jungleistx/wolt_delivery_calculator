@@ -1,13 +1,73 @@
-# wolt_delivery_calculator
+# :pizza: Wolt Summer 2024 Engineering Internship :pizza:
+RESTFUL API for the Wolt Backend pre-assignment.
 
-# Wolt Summer 2024 Engineering Internship
-This is my implementation of the pre-assingments backend, written in Python.
+https://github.com/woltapp/engineering-internship-2024
 
-#### install requirements:
-pip install -r requirements.txt
+## Technologies used :computer:
+- **[Python3](https://docs.python.org/3/)**
+- **[Flask](https://flask.palletsprojects.com/en/3.0.x/)**
 
+## How to run (macOS) :runner:
+### 1. Clone the repository and navigate into it:
+> ```bash
+> git clone repository_name
+>   ```
+> ```bash
+> cd wolt_delivery_calculator
+> ```
 
-### Specification
+### 2. Install requirements:
+> [!IMPORTANT]
+> ```bash
+> pip install -r requirements.txt
+> ```
+> - This will ensure all the necessary tools are up-to-date
+>
+> :warning: in case of ```pip: command not found```,
+> follow these instructions: (https://pip.pypa.io/en/stable/installation/)
+
+### 3. Write in terminal: :pencil2:
+> ```bash
+> python3 main.py
+> ```
+> - this will start the application
+
+### 4. Open your favourite browser:
+> :arrow_right:  [http://localhost:8000/](http://localhost:8000/)
+
+### 5. Send POST-request to the running program:
+- :bulb:Example of a request payload (JSON):
+> ```json
+> {
+> "cart_value": 790,
+> "delivery_distance": 2235,
+> "number_of_items": 4,
+> "time": "2024-01-15T13:00:00Z"
+> }
+> ```
+#### Field details
+
+| Field             | Type  | Description                                                               | Example value                             |
+|:---               |:---   |:---                                                                       |:---                                       |
+|cart_value         |Integer|Value of the shopping cart __in cents__.                                   |__790__ (790 cents = 7.90€)                |
+|delivery_distance  |Integer|The distance between the store and customer’s location __in meters__.      |__2235__ (2235 meters = 2.235 km)          |
+|number_of_items    |Integer|The __number of items__ in the customer's shopping cart.                   |__4__ (customer has 4 items in the cart)   |
+|time               |String |Order time in UTC in [ISO format](https://en.wikipedia.org/wiki/ISO_8601). |__2024-01-15T13:00:00Z__                   |
+- Payload **must** contain atleast the fields mentioned above.
+- Accepts only non-negative values as integers.
+> [!TIP]
+> :pencil2: Try it in terminal:
+> ```bash
+> curl -X POST -H "Content-type: application/json" -d "{\"cart_value\": 790, \"delivery_distance\": 2235, \"number_of_items\": 4, \"time\": \"2024-01-15T13:00:00Z\"}" "localhost:8000"
+> ```
+
+## Response (JSON)
+The calculated delivery fee will be returned in JSON-format:
+```json
+{"delivery_fee": 710}
+```
+
+## Specifications for the task
 Rules for calculating a delivery fee
 * If the cart value is less than 10€, a small order surcharge is added to the delivery price. The surcharge is the difference between the cart value and 10€. For example if the cart value is 8.90€, the surcharge will be 1.10€.
 * A delivery fee for the first 1000 meters (=1km) is 2€. If the delivery distance is longer than that, 1€ is added for every additional 500 meters that the courier needs to travel before reaching the destination. Even if the distance would be shorter than 500 meters, the minimum fee is always 1€.
@@ -23,17 +83,3 @@ Rules for calculating a delivery fee
 * The delivery fee can __never__ be more than 15€, including possible surcharges.
 * The delivery is free (0€) when the cart value is equal or more than 200€.
 * During the Friday rush, 3 - 7 PM, the delivery fee (the total fee including possible surcharges) will be multiplied by 1.2x. However, the fee still cannot be more than the max (15€). Considering timezone, for simplicity, **use UTC as a timezone in backend solutions** (so Friday rush is 3 - 7 PM UTC). **In frontend solutions, use the timezone of the browser** (so Friday rush is 3 - 7 PM in the timezone of the browser).
-
-
-##### Field details
-
-| Field             | Type  | Description                                                               | Example value                             |
-|:---               |:---   |:---                                                                       |:---                                       |
-|cart_value         |Integer|Value of the shopping cart __in cents__.                                   |__790__ (790 cents = 7.90€)                |
-|delivery_distance  |Integer|The distance between the store and customer’s location __in meters__.      |__2235__ (2235 meters = 2.235 km)          |
-|number_of_items    |Integer|The __number of items__ in the customer's shopping cart.                   |__4__ (customer has 4 items in the cart)   |
-|time               |String |Order time in UTC in [ISO format](https://en.wikipedia.org/wiki/ISO_8601). |__2024-01-15T13:00:00Z__                   |
-
-
-#### Full Task
-https://github.com/woltapp/engineering-internship-2024
