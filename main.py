@@ -1,4 +1,4 @@
-import validation, fees
+import validation, fees, usage
 from const import *
 import json
 from flask import Flask, jsonify, request
@@ -9,25 +9,15 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def usage_wrong_method():
-	return '''
-<p>Calculate delivery fee:</p>
-<table>
-	<tr><td>METHOD</td> <td>POST</td></tr>
-	<tr><td>content-type</td> <td>application/json</td></tr>
-	<tr><td>\'cart_value\'</td> <td>integer</td></tr>
-	<tr><td>\'delivery_distance\'</td> <td>integer</td></tr>
-	<tr><td>\'number_of_items\'</td> <td>integer</td></tr>
-	<tr><td>\'time\'</td> <td>string</td></tr>
-</table>
-'''
+def frontpage_get():
+	return usage.wrong_method()
 
 
 @app.route('/', methods=['POST'])
 def calculate_delivery_fee():
 	cart_details = request.json
 	if not validation.validate_cart_details(cart_details):
-		return usage_invalid_input()
+		return usage.invalid_input()
 
 	delivery_fee = 0
 	if fees.check_free_delivery(cart_details['cart_value']):
