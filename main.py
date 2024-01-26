@@ -16,6 +16,8 @@ def get_delivery_fee(cart_details:json) -> json:
 		return {"delivery_fee": delivery_fee}
 
 	delivery_fee += calculate_delivery_surcharge(cart_details['cart_value'])
+	delivery_fee += calculate_delivery_distance(cart_details['delivery_distance'])
+	delivery_fee += calculate_delivery_items(cart_details['number_of_items'])
 
 	return {"delivery_fee": delivery_fee}
 
@@ -41,5 +43,18 @@ def calculate_delivery_distance(distance:int) -> int:
 		distance -= 500
 
 	return delivery_distance_fee
+
+
+def calculate_delivery_items(items:int) -> int:
+	delivery_fee = 0
+
+	if items >= 5:
+		delivery_fee = (items - 4) * 50
+
+		if items >= 12:
+			delivery_fee += 120
+
+	return delivery_fee
+
 
 main()
