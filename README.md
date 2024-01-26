@@ -30,7 +30,12 @@ https://github.com/woltapp/engineering-internship-2024
 > ```bash
 > python3 main.py
 > ```
-> - this will start the application
+> - this will start the application, you should see something similar to this
+
+<p align="center" border="none">
+  <img alt="terminal_view" src="img/terminal_view.png" align="center">
+</p>
+
 
 ### 4. Open your favourite browser:
 > :arrow_right:  [http://localhost:8000/](http://localhost:8000/)
