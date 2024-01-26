@@ -1,5 +1,7 @@
 # wolt_delivery_calculator
 
+# Wolt Summer 2024 Engineering Internship
+This is my implementation of the pre-assingments backend, written in Python.
 
 #### install requirements:
 pip install -r requirements.txt
