@@ -27,13 +27,20 @@ def usage_get_method():
 @app.route('/', methods=['POST'])
 def calculate_delivery_fee():
 	cart_details = request.json
-
 	if not validate_cart_details(cart_details):
 		return usage_invalid_input()
 
 	delivery_fee = 0
+	if check_free_delivery(cart_details['cart_value']):
+		return jsonify({"delivery_fee": delivery_fee})
 
 	return jsonify({'delivery_fee': delivery_fee})
+
+
+def check_free_delivery(cart_value:int) -> bool:
+	if cart_value >= FREE_DELIVERY_LIMIT:
+		return True
+	return False
 
 
 def usage_invalid_input():
