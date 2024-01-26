@@ -36,8 +36,6 @@ def calculate_delivery_fee():
 	return jsonify({'delivery_fee': delivery_fee})
 
 
-
-
 if __name__ == '__main__':
 	app.run(port=8000, debug=True)
 
