@@ -1,3 +1,6 @@
+from flask import jsonify
+
+
 def wrong_method():
 	return '''
 <p>Calculate delivery fee:</p>
@@ -13,12 +16,4 @@ def wrong_method():
 
 
 def invalid_input():
-	return '''
-Invalid input!
-Make sure that you POST the following attributes:
-	content-type: application/json
-	\'cart_value\': integer
-	\'delivery_distance\': integer
-	\'number_of_items\': integer
-	\'time\': string
-'''
+	return jsonify({"delivery_fee": "Invalid input!"})
