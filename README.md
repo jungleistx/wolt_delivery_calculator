@@ -1,20 +1,29 @@
 # :pizza: Wolt Summer 2024 Engineering Internship :pizza:
-RESTFUL API for the Wolt Backend pre-assignment.
 
+## Table of contents
+1. [About The Project](#about-the-project)
+   * [Technologies used](#technologies-used-computer)
+3. [Installation](#installation)
+4. [Usage](#usage)
+5. [Response](#response-json)
+6. [Spesifications](#specifications-for-the-task)
+7. [License](#license) :construction: `added later`
+8. [Contact](#contact) :construction: `added later`
+
+## About the project
+This is an API build for calculating delivery fees. It is a backend pre-assignment for Wolt's Summer 2024 Internship.
 https://github.com/woltapp/engineering-internship-2024
 
-## Technologies used :computer:
+### Technologies used :computer:
 - **[Python3](https://docs.python.org/3/)**
 - **[Flask](https://flask.palletsprojects.com/en/3.0.x/)**
 
-## How to run (macOS) :runner:
+## Installation
 ### 1. Clone the repository and navigate into it:
 > ```bash
 > git clone repository_name
->   ```
-> ```bash
 > cd wolt_delivery_calculator
-> ```
+>   ```
 
 ### 2. Install requirements:
 > [!IMPORTANT]
@@ -24,23 +33,25 @@ https://github.com/woltapp/engineering-internship-2024
 > - This will ensure all the necessary tools are up-to-date
 >
 > :warning: in case of ```pip: command not found```,
-> follow these instructions: (https://pip.pypa.io/en/stable/installation/)
+> follow these instructions: https://pip.pypa.io/en/stable/installation/ :warning:
 
-### 3. Write in terminal: :pencil2:
+## Usage
+### 1. Write in terminal: :pencil2:
 > ```bash
 > python3 main.py
 > ```
-> - this will start the application, you should see something similar to this:
+> - This will start the application.
+> - Example output:
 
 > <p align="center" border="none">
 >  <img alt="terminal_view" src="img/terminal_view.png" align="center">
 > </p>
 
 
-### 4. Open your favourite browser:
+### 2. Open your favourite browser:
 > :arrow_right:  [http://localhost:8000/](http://localhost:8000/)
 
-### 5. Send POST-request to the running program:
+### 3. Send POST-request to the running program:
 - :bulb:Example of a request payload (JSON):
 > ```json
 > {
@@ -88,3 +99,5 @@ Rules for calculating a delivery fee
 * The delivery fee can __never__ be more than 15€, including possible surcharges.
 * The delivery is free (0€) when the cart value is equal or more than 200€.
 * During the Friday rush, 3 - 7 PM, the delivery fee (the total fee including possible surcharges) will be multiplied by 1.2x. However, the fee still cannot be more than the max (15€). Considering timezone, for simplicity, **use UTC as a timezone in backend solutions** (so Friday rush is 3 - 7 PM UTC). **In frontend solutions, use the timezone of the browser** (so Friday rush is 3 - 7 PM in the timezone of the browser).
+
+:arrow_up: [Back to top](#pizza-wolt-summer-2024-engineering-internship-pizza)
