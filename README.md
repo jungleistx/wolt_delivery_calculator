@@ -8,7 +8,7 @@
 5. [Response](#response-json)
 6. [Spesifications](#specifications-for-the-task)
 7. [License](#license) :construction: `added later`
-8. [Contact](#contact) :construction: `added later`
+8. [Contact](#contact)
 
 ## About the project
 This is an API build for calculating delivery fees. It is a backend pre-assignment for Wolt's Summer 2024 Internship.
@@ -84,6 +84,8 @@ The calculated delivery fee will be returned in JSON-format:
 ```
 
 ## Specifications for the task
+Implement an HTTP API (single POST endpoint) which calculates the delivery fee based on the information in the request payload (JSON) and includes the calculated delivery fee in the response payload (JSON).
+
 Rules for calculating a delivery fee
 * If the cart value is less than 10€, a small order surcharge is added to the delivery price. The surcharge is the difference between the cart value and 10€. For example if the cart value is 8.90€, the surcharge will be 1.10€.
 * A delivery fee for the first 1000 meters (=1km) is 2€. If the delivery distance is longer than that, 1€ is added for every additional 500 meters that the courier needs to travel before reaching the destination. Even if the distance would be shorter than 500 meters, the minimum fee is always 1€.
@@ -99,5 +101,14 @@ Rules for calculating a delivery fee
 * The delivery fee can __never__ be more than 15€, including possible surcharges.
 * The delivery is free (0€) when the cart value is equal or more than 200€.
 * During the Friday rush, 3 - 7 PM, the delivery fee (the total fee including possible surcharges) will be multiplied by 1.2x. However, the fee still cannot be more than the max (15€). Considering timezone, for simplicity, **use UTC as a timezone in backend solutions** (so Friday rush is 3 - 7 PM UTC). **In frontend solutions, use the timezone of the browser** (so Friday rush is 3 - 7 PM in the timezone of the browser).
+
+## Contact
+Roope Vuorenlehto
+
+[Github @jungleistx](https://github.com/jungleistx)
+
+[LinkedIn](https://www.linkedin.com/in/roope-vuorenlehto/)
+
+[Project Link](https://github.com/jungleistx/wolt_delivery_calculator)
 
 :arrow_up: [Back to top](#pizza-wolt-summer-2024-engineering-internship-pizza)
