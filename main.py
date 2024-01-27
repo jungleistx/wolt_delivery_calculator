@@ -1,5 +1,9 @@
-from src import validation, fees, usage
-from src.const import *
+from src import usage
+from src import validation
+from src.fees import calculate_delivery_fee
+# from src.const import *
+
+
 import json
 from flask import Flask, jsonify, request
 from datetime import datetime
@@ -10,28 +14,17 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def frontpage_get():
-	return usage.wrong_method()
+	return usage.wrong_method(), 405
 
 
 @app.route('/', methods=['POST'])
 def frontpage_api():
+
 	cart_details = request.json
 	if not validation.validate_cart_details(cart_details):
-		return usage.invalid_input()
+		return usage.invalid_input(), 400
 
-	if fees.check_free_delivery(cart_details['cart_value']):
-		return jsonify({"delivery_fee": 0}), 200
-
-	delivery_fee = 0
-	delivery_fee += fees.calculate_delivery_surcharge(cart_details['cart_value'])
-	delivery_fee += fees.calculate_delivery_distance(cart_details['delivery_distance'])
-	delivery_fee += fees.calculate_delivery_items(cart_details['number_of_items'])
-
-	if validation.is_rushhour(cart_details['time']):
-		delivery_fee *= DELIVERY_FEE_RUSH_MULTIPLIER
-
-	if delivery_fee > MAX_DELIVERY_FEE:
-		delivery_fee = MAX_DELIVERY_FEE
+	delivery_fee = calculate_delivery_fee(cart_details)
 
 	response_data = {'delivery_fee': delivery_fee}
 	return jsonify(response_data), 200

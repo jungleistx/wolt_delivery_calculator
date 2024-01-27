@@ -42,3 +42,21 @@ def calculate_delivery_surcharge(cart_value:int) -> int:
 	if cart_value < MINIMUM_CART_VALUE:
 		return MINIMUM_CART_VALUE - cart_value
 	return 0
+
+
+def calculate_delivery_fee(cart_details:dict) -> int:
+	if check_free_delivery(cart_details['cart_value']):
+		return 0
+
+	delivery_fee = 0
+	delivery_fee += calculate_delivery_surcharge(cart_details['cart_value'])
+	delivery_fee += calculate_delivery_distance(cart_details['delivery_distance'])
+	delivery_fee += calculate_delivery_items(cart_details['number_of_items'])
+
+	if is_rushhour(cart_details['time']):
+		delivery_fee *= DELIVERY_FEE_RUSH_MULTIPLIER
+
+	if delivery_fee > MAX_DELIVERY_FEE:
+		delivery_fee = MAX_DELIVERY_FEE
+
+	return int(delivery_fee)
