@@ -8,7 +8,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def frontpage_get():
 	return usage.wrong_method()
 
@@ -19,10 +19,10 @@ def calculate_delivery_fee():
 	if not validation.validate_cart_details(cart_details):
 		return usage.invalid_input()
 
-	delivery_fee = 0
 	if fees.check_free_delivery(cart_details['cart_value']):
-		return jsonify({"delivery_fee": delivery_fee})
+		return jsonify({"delivery_fee": 0}), 200
 
+	delivery_fee = 0
 	delivery_fee += fees.calculate_delivery_surcharge(cart_details['cart_value'])
 	delivery_fee += fees.calculate_delivery_distance(cart_details['delivery_distance'])
 	delivery_fee += fees.calculate_delivery_items(cart_details['number_of_items'])
@@ -33,7 +33,8 @@ def calculate_delivery_fee():
 	if delivery_fee > MAX_DELIVERY_FEE:
 		delivery_fee = MAX_DELIVERY_FEE
 
-	return jsonify({'delivery_fee': delivery_fee})
+	response_data = {'delivery_fee': delivery_fee}
+	return jsonify(response_data), 200
 
 
 if __name__ == '__main__':
