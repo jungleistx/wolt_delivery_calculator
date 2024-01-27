@@ -21,7 +21,7 @@ https://github.com/woltapp/engineering-internship-2024
 ## Installation
 ### 1. Clone the repository and navigate into it:
 > ```bash
-> git clone repository_name
+> git clone https://github.com/jungleistx/wolt_delivery_calculator.git
 > cd wolt_delivery_calculator
 >   ```
 
