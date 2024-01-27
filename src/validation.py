@@ -29,12 +29,3 @@ def validate_cart_details(cart_details:dict) -> bool:
 	if not validate_cart_content(cart_details):
 		return False
 	return True
-
-
-def is_rushhour(time:str) -> bool:
-	delivery_date = datetime.fromisoformat(time)
-
-	if delivery_date.isoweekday() == ISO_FRIDAY:
-		if delivery_date.hour >= 15 and delivery_date.hour < 19:
-			return True
-	return False
