@@ -1,9 +1,6 @@
 from src import usage
-from src import validation
 from src.fees import calculate_delivery_fee
-# from src.const import *
-
-
+from src.validation import validate_cart_details
 import json
 from flask import Flask, jsonify, request
 from datetime import datetime
@@ -21,7 +18,7 @@ def frontpage_get():
 def frontpage_api():
 
 	cart_details = request.json
-	if not validation.validate_cart_details(cart_details):
+	if not validate_cart_details(cart_details):
 		return usage.invalid_input(), 400
 
 	delivery_fee = calculate_delivery_fee(cart_details)
