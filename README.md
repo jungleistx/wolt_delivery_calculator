@@ -42,7 +42,7 @@ https://github.com/woltapp/engineering-internship-2024
 ## Usage
 ### 1. Write in terminal: :pencil2:
 > ```bash
-> python3 main.py
+> python3 app.py
 > ```
 > - This will start the application.
 > - Example output:
@@ -52,7 +52,7 @@ https://github.com/woltapp/engineering-internship-2024
 > </p>
 
 
-### 2. Open your favourite browser:
+### 2. Open your favourite browser (optional):
 > :arrow_right:  [http://localhost:8000/](http://localhost:8000/)
 
 ### 3. Send POST-request to the running program:
