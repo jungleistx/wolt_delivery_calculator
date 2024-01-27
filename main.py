@@ -14,7 +14,7 @@ def frontpage_get():
 
 
 @app.route('/', methods=['POST'])
-def calculate_delivery_fee():
+def frontpage_api():
 	cart_details = request.json
 	if not validation.validate_cart_details(cart_details):
 		return usage.invalid_input()
