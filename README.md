@@ -7,8 +7,10 @@
 4. [Usage](#usage)
 5. [Response](#response-json)
 6. [Spesifications](#specifications-for-the-task)
-7. [License](#license) :construction: `added later`
+7. License :construction: `added later`
 8. [Contact](#contact)
+
+<!-- 7. [License](#license) :construction: `added later`  -->
 
 ## About the project
 This is an API build for calculating delivery fees. It is a backend pre-assignment for Wolt's Summer 2024 Internship.
