@@ -1,7 +1,7 @@
 from flask import jsonify
 
 
-def wrong_method():
+def error_wrong_method():
 	return '''
 <p>Calculate delivery fee:</p>
 <table>
@@ -15,5 +15,9 @@ def wrong_method():
 '''
 
 
-def invalid_input():
-	return jsonify({"delivery_fee": "Invalid input!"})
+def error_empty_input():
+	return jsonify({"error": "Invalid input, please provide the required fields!"})
+
+
+def error_invalid_input():
+	return jsonify({"error": "Invalid input, field(s) missing!"})
