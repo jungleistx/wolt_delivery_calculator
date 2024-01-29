@@ -87,7 +87,7 @@ The calculated delivery fee will be returned in JSON-format:
 {"delivery_fee": 710}
 ```
 OR in case of an error:
-````json
+```json
 {"error": "error_message"}
 ```
 
