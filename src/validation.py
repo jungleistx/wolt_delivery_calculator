@@ -1,16 +1,12 @@
-from src.const import *
-from datetime import datetime
 
 def validate_cart_content(cart:dict) -> bool:
-	if not isinstance(cart['cart_value'], int) or cart['cart_value'] < 0:
-		return False
-	if not isinstance(cart['delivery_distance'], int) or cart['delivery_distance'] < 0:
-		return False
-	if not isinstance(cart['number_of_items'], int) or cart['number_of_items'] < 0:
-		return False
-	if not isinstance(cart['time'], str) or cart['time'] is None:
-		return False
-	return True
+	validations = [
+		isinstance(cart['cart_value'], int) and cart['cart_value'] >= 0,
+		isinstance(cart['delivery_distance'], int) and cart['delivery_distance'] >= 0,
+		isinstance(cart['number_of_items'], int) and cart['number_of_items'] >= 0,
+		isinstance(cart['time'], str) and cart['time'] is not None,
+	]
+	return all(validations)
 
 
 def validate_cart_keys(cart_keys:dict) -> bool:
