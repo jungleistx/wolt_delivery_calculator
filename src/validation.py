@@ -22,8 +22,6 @@ def validate_cart_keys(cart_keys:dict) -> bool:
 
 
 def validate_cart_details(cart_details:dict) -> bool:
-	if not cart_details:
-		return False
 	if not validate_cart_keys(cart_details):
 		return False
 	if not validate_cart_content(cart_details):
