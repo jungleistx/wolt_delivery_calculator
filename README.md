@@ -86,6 +86,10 @@ The calculated delivery fee will be returned in JSON-format:
 ```json
 {"delivery_fee": 710}
 ```
+OR in case of an error:
+````json
+{"error": "error_message"}
+```
 
 ## Specifications for the task
 Implement an HTTP API (single POST endpoint) which calculates the delivery fee based on the information in the request payload (JSON) and includes the calculated delivery fee in the response payload (JSON).
