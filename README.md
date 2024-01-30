@@ -7,9 +7,10 @@
 4. [Usage](#usage)
 5. [Response](#response-json)
    * [Response status codes](#response-status-codes)
-6. [Spesifications](#specifications-for-the-task)
-7. License :construction: `added later`
-8. [Contact](#contact)
+6. [How to test](#how-to-test)
+7. [Spesifications](#specifications-for-the-task)
+8. License :construction: `added later`
+9. [Contact](#contact)
 
 <!-- 7. [License](#license) :construction: `added later`  -->
 
@@ -100,6 +101,13 @@ OR in case of an error:
 500 - server error
 ```
 :arrow_up: [Back to top](#pizza-wolt-summer-2024-engineering-internship-pizza)
+
+## How to test
+From project root directory, write to terminal:
+```bash
+python3 -m pytest
+```
+
 ## Specifications for the task
 Implement an HTTP API (single POST endpoint) which calculates the delivery fee based on the information in the request payload (JSON) and includes the calculated delivery fee in the response payload (JSON).
 
