@@ -71,3 +71,14 @@ def test_wrong_method(client):
 	response = client.get('/')
 
 	assert response.status_code == 405
+
+
+def test_invalid_time(client):
+	data = DEFAULT_DATA.copy()
+	data['time'] = "2024-01-35T13:00:00Z"
+
+	response = client.post('/', json=data)
+	result = json.loads(response.data)
+
+	assert response.status_code == 400
+	assert 'error' in result
