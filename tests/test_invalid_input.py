@@ -91,3 +91,14 @@ def test_empty_json(client):
 
 	assert response.status_code == 400
 	assert 'error' in result
+
+
+def test_wrong_content_type(client):
+	data = DEFAULT_DATA.copy()
+	headers = {'Content-Type': 'text/html'}
+
+	response = client.post('/', json=data, headers=headers)
+	result = json.loads(response.data)
+
+	assert response.status_code == 415
+	assert 'error' in result
