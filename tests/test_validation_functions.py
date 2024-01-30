@@ -10,7 +10,7 @@ DEFAULT_DATA = {
 }
 
 
-def test_cart_keys(client):
+def test_validate_cart_keys(client):
 	data = DEFAULT_DATA.copy()
 	assert validate_cart_keys(data) == True
 
@@ -33,7 +33,7 @@ def test_cart_keys(client):
 	assert validate_cart_keys(data) == True
 
 
-def test_cart_field_types(client):
+def test_validate_cart_field_types(client):
 	data = DEFAULT_DATA.copy()
 	assert validate_cart_field_types(data) == True
 
@@ -51,7 +51,7 @@ def test_cart_field_types(client):
 	assert validate_cart_field_types(data) == False
 
 
-def test_cart_content_negative(client):
+def test_validate_cart_content_negative(client):
 	data = DEFAULT_DATA.copy()
 	assert validate_cart_content_negative(data) == True
 
@@ -67,7 +67,7 @@ def test_cart_content_negative(client):
 	assert validate_cart_content_negative(data) == False
 
 
-def test_cart_items(client):
+def test_validate_cart_items(client):
 	data = DEFAULT_DATA.copy()
 	assert validate_cart_items(data) == True
 
@@ -79,3 +79,14 @@ def test_cart_items(client):
 
 	data['number_of_items'] = 1
 	assert validate_cart_items(data) == True
+
+
+def test_validate_cart_time():
+	data = DEFAULT_DATA.copy()
+	assert validate_cart_time(data['time']) == True
+
+	data['time'] = "2024-01-15T29:00:00Z"
+	assert validate_cart_time(data['time']) == False
+
+	data['time'] = "2050-01-35T19:00:00Z"
+	assert validate_cart_time(data['time']) == False
