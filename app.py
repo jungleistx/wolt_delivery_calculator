@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def frontpage_get():
-	return usage.wrong_method(), 405
+	return usage.error_wrong_method(), 405
 
 
 @app.route('/', methods=['POST'])
