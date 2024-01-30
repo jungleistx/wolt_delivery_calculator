@@ -56,3 +56,26 @@ def test_rushhour(client):
 	assert is_rushhour("2024-01-19T08:00:00-05:00") == False
 	assert is_rushhour("2024-01-19T11:00:00-05:00") == True
 	assert is_rushhour("2024-01-19T13:59:00-05:00") == True
+
+
+def test_delivery_fee(client):
+	data = {'cart_value': 2200, 'delivery_distance': 900, 'number_of_items': 2, 'time': "2024-01-19T13:00:00Z"}
+	assert calculate_delivery_fee(data) == 200
+
+	data['cart_value'] = 800
+	assert calculate_delivery_fee(data) == 400
+
+	data['delivery_distance'] = 1200
+	assert calculate_delivery_fee(data) == 500
+
+	data['time'] = "2024-01-19T15:00:00Z"
+	assert calculate_delivery_fee(data) == 600
+
+	data['cart_value'] = FREE_DELIVERY_LIMIT + 100
+	assert calculate_delivery_fee(data) == 0
+
+	data = {'cart_value': 40, 'delivery_distance': 6500, 'number_of_items': 25, 'time': "2024-01-19T15:00:00Z"}
+	assert calculate_delivery_fee(data) == 1500
+
+	data = {'cart_value': 0, 'delivery_distance': 0, 'number_of_items': 1, 'time': "2024-01-19T13:00:00Z"}
+	assert calculate_delivery_fee(data) == 1200
