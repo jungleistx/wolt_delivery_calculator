@@ -17,14 +17,20 @@ def frontpage_get():
 @app.route('/', methods=['POST'])
 def frontpage_api():
 
-	cart_details = request.json
-	if not validate_cart_details(cart_details):
-		return usage.invalid_input(), 400
+	try:
+		cart_details = request.json
+		if not cart_details:
+			return usage.error_empty_input(), 400
 
-	delivery_fee = calculate_delivery_fee(cart_details)
+		if not validate_cart_details(cart_details):
+			return usage.error_invalid_input(), 400
 
-	response_data = {'delivery_fee': delivery_fee}
-	return jsonify(response_data), 200
+		delivery_fee = calculate_delivery_fee(cart_details)
+		response_data = {'delivery_fee': delivery_fee}
+		return jsonify(response_data), 200
+
+	except Exception as e:
+		return jsonify({'error': str(e)}), 500
 
 
 if __name__ == '__main__':
