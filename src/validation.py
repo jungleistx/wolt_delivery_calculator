@@ -9,7 +9,7 @@ def validate_cart_keys(cart_keys:dict) -> bool:
 	return True
 
 
-def validate_cart_field_types(cart):
+def validate_cart_field_types(cart) -> bool:
 	validations = [
 		isinstance(cart['cart_value'], int),
 		isinstance(cart['delivery_distance'], int),
