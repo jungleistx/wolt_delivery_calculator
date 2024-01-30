@@ -54,3 +54,14 @@ def test_negative_value(client):
 
 	assert response.status_code == 400
 	assert 'error' in result
+
+
+def test_zero_items(client):
+	data = DEFAULT_DATA.copy()
+	data['number_of_items'] = 0
+
+	response = client.post('/', json=data)
+	result = json.loads(response.data)
+
+	assert response.status_code == 400
+	assert 'error' in result
