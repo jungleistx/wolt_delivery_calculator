@@ -1,7 +1,5 @@
 from app import app
-from src.fees import *
-from src.const import *
-import pytest, json
+import pytest
 
 
 @pytest.fixture
