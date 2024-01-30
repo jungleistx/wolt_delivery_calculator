@@ -1,9 +1,9 @@
 from app import app
 import pytest, json
 
+
 @pytest.fixture
 def client():
-	# Create a test client using the Flask app instance
 	with app.test_client() as client:
 		yield client
 
