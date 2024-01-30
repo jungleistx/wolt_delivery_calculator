@@ -34,7 +34,7 @@ def test_cart_keys(client):
 
 
 def test_cart_field_types(client):
-	data = {"cart_value": 50, "delivery_distance": 100, "number_of_items": 1, "time": "2024-01-15T13:00:00Z"}
+	data = DEFAULT_DATA.copy()
 	assert validate_cart_field_types(data) == True
 
 	data["cart_value"] = ""
@@ -49,3 +49,19 @@ def test_cart_field_types(client):
 	data["delivery_distance"] = 100
 	data["time"] = 50
 	assert validate_cart_field_types(data) == False
+
+
+def test_cart_content_negative(client):
+	data = DEFAULT_DATA.copy()
+	assert validate_cart_content_negative(data) == True
+
+	data['cart_value'] = -1
+	assert validate_cart_content_negative(data) == False
+
+	data['cart_value'] = 1
+	data['delivery_distance'] = -1
+	assert validate_cart_content_negative(data) == False
+
+	data['delivery_distance'] = 100
+	data['time'] = None
+	assert validate_cart_content_negative(data) == False
