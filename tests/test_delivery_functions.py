@@ -22,3 +22,11 @@ def test_delivery_distance(client):
 	assert calculate_delivery_distance(1500) == 300
 	assert calculate_delivery_distance(1501) == 400
 	assert calculate_delivery_distance(6500) == 1300
+
+
+def test_free_delivery(client):
+	assert check_free_delivery(FREE_DELIVERY_LIMIT) == True
+	assert check_free_delivery(FREE_DELIVERY_LIMIT - 100) == False
+	assert check_free_delivery(45000) == True
+	assert check_free_delivery(200) == False
+	assert check_free_delivery(0) == False
