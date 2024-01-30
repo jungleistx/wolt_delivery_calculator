@@ -20,4 +20,4 @@ def error_empty_input():
 
 
 def error_invalid_input():
-	return jsonify({"error": "Invalid input, field(s) missing!"})
+	return jsonify({"error": "Invalid input, field(s) incorrect/missing!"})
