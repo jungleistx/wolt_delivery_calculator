@@ -1,5 +1,4 @@
 from src.validation import *
-from src.const import *
 
 
 DEFAULT_DATA = {
