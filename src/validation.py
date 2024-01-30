@@ -18,8 +18,10 @@ def validate_cart_keys(cart_keys:dict) -> bool:
 
 
 def validate_cart_details(cart_details:dict) -> bool:
+	if not cart_details:
+		return {"error": "Missing input, please provide the required fields!"}
 	if not validate_cart_keys(cart_details):
-		return False
+		return {'error': 'Invalid input, field(s) missing!'}
 	if not validate_cart_content(cart_details):
-		return False
-	return True
+		return {'error': 'Invalid input!'}
+	return None
