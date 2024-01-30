@@ -16,19 +16,13 @@ def client():
 		yield client
 
 
-def test_example_input(client):
-	input = {
-		"cart_value": 790,
-		"delivery_distance": 2235,
-		"number_of_items": 4,
-		"time": "2024-01-15T13:00:00Z"
-	}
-	response = client.post('/', json=input)
+def test_default_values(client):
+	response = client.post('/', json=DEFAULT_DATA)
 	result = json.loads(response.data)
 
 	assert response.status_code == 200
 	assert 'delivery_fee' in result
-	assert result['delivery_fee'] == 710
+	assert result['delivery_fee'] == 200
 
 
 def test_one_item(client):
