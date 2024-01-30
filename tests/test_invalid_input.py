@@ -23,16 +23,12 @@ def test_wrong_field(client):
 	assert 'error' in result
 
 
+def test_missing_field(client):
+	data = DEFAULT_DATA.copy()
+	del data['cart_value']
 
+	response = client.post('/', json=data)
+	result = json.loads(response.data)
 
-
-
-
-
-# def test_default_values(client):
-# 	response = client.post('/', json=DEFAULT_DATA)
-# 	result = json.loads(response.data)
-
-# 	assert response.status_code == 200
-# 	assert 'delivery_fee' in result
-# 	assert result['delivery_fee'] == 200
+	assert response.status_code == 400
+	assert 'error' in result
