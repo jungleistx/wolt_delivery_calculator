@@ -10,20 +10,19 @@ DEFAULT_DATA = {
 }
 
 
-
 def test_cart_keys(client):
-	data = {"cart_value": 0, "delivery_distance": 0, "number_of_items": 1, "time": "2024-01-15T13:00:00Z"}
+	data = DEFAULT_DATA.copy()
 	assert validate_cart_keys(data) == True
 
 	del data['cart_value']
 	assert validate_cart_keys(data) == False
 
-	data['cart_value'] = 1
+	data['cart_value'] = 100
 	assert validate_cart_keys(data) == True
 	del data['delivery_distance']
 	assert validate_cart_keys(data) == False
 
-	data['delivery_distance'] = 1
+	data['delivery_distance'] = 50
 	del data["number_of_items"]
 	assert validate_cart_keys(data) == False
 
@@ -32,3 +31,21 @@ def test_cart_keys(client):
 	assert validate_cart_keys(data) == False
 	data["time"] = "2024-01-15T13:20:00Z"
 	assert validate_cart_keys(data) == True
+
+
+def test_cart_field_types(client):
+	data = {"cart_value": 50, "delivery_distance": 100, "number_of_items": 1, "time": "2024-01-15T13:00:00Z"}
+	assert validate_cart_field_types(data) == True
+
+	data["cart_value"] = ""
+	assert validate_cart_field_types(data) == False
+
+	data["cart_value"] = 50
+	assert validate_cart_field_types(data) == True
+
+	data["delivery_distance"] = ""
+	assert validate_cart_field_types(data) == False
+
+	data["delivery_distance"] = 100
+	data["time"] = 50
+	assert validate_cart_field_types(data) == False
