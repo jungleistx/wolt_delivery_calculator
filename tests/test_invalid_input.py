@@ -14,7 +14,7 @@ DEFAULT_DATA = {
 def test_wrong_field(client):
 	data = DEFAULT_DATA.copy()
 	del data['cart_value']
-	data['cart_price'] = 450
+	data['price'] = 450
 
 	response = client.post('/', json=data)
 	result = json.loads(response.data)
@@ -36,8 +36,18 @@ def test_missing_field(client):
 
 def test_wrong_field_type(client):
 	data = DEFAULT_DATA.copy()
-	del data['cart_value']
 	data['cart_value'] = "150"
+
+	response = client.post('/', json=data)
+	result = json.loads(response.data)
+
+	assert response.status_code == 400
+	assert 'error' in result
+
+
+def test_negative_value(client):
+	data = DEFAULT_DATA.copy()
+	data['cart_value'] = -15
 
 	response = client.post('/', json=data)
 	result = json.loads(response.data)
