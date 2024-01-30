@@ -36,6 +36,12 @@ def validate_cart_content_negative(cart:dict) -> bool:
 	return all(validations)
 
 
+def validate_cart_items(cart:dict) -> bool:
+	if cart['number_of_items'] < 1:
+		return False
+	return True
+
+
 def validate_cart_details(cart_details:dict) -> bool:
 	if not cart_details:
 		return {"error": "Missing input, please provide the required fields!"}
@@ -45,4 +51,6 @@ def validate_cart_details(cart_details:dict) -> bool:
 		return {'error': 'Invalid input, wrong field-type(s)!'}
 	if not validate_cart_content_negative(cart_details):
 		return {'error': 'Invalid input, negative/NULL value detected!'}
+	if not validate_cart_items(cart_details):
+		return {'error': 'Invalid input, minimum of 1 \'number_of_items\' required!'}
 	return None
