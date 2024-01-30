@@ -66,6 +66,7 @@ This is an API build for calculating delivery fees. It is a backend pre-assignme
 > "time": "2024-01-15T13:00:00Z"
 > }
 > ```
+:arrow_up: [Back to top](#pizza-wolt-summer-2024-engineering-internship-pizza)
 #### Field details
 
 | Field             | Type  | Description                                                               | Example value                             |
@@ -98,7 +99,7 @@ OR in case of an error:
 405 - wrong method used
 500 - server error
 ```
-
+:arrow_up: [Back to top](#pizza-wolt-summer-2024-engineering-internship-pizza)
 ## Specifications for the task
 Implement an HTTP API (single POST endpoint) which calculates the delivery fee based on the information in the request payload (JSON) and includes the calculated delivery fee in the response payload (JSON).
 
