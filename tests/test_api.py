@@ -111,3 +111,18 @@ def test_min_delivery_distance(client):
 	assert response.status_code == 200
 	assert 'delivery_fee' in result
 	assert result['delivery_fee'] == 200
+
+
+def test_bigger_delivery_distance(client):
+	input = {
+		"cart_value": 1750,
+		"delivery_distance": 2600,
+		"number_of_items": 1,
+		"time": "2024-01-18T17:00:00Z"
+	}
+	response = client.post('/', json=input)
+	result = json.loads(response.data)
+
+	assert response.status_code == 200
+	assert 'delivery_fee' in result
+	assert result['delivery_fee'] == 600
