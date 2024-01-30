@@ -1,6 +1,6 @@
 from src.const import *
 from src.fees import *
-
+from test_valid_input import DEFAULT_DATA
 
 def test_surcharge(client):
 	assert calculate_delivery_surcharge(MINIMUM_CART_VALUE) == 0
@@ -59,7 +59,7 @@ def test_rushhour(client):
 
 
 def test_delivery_fee(client):
-	data = {'cart_value': 2200, 'delivery_distance': 900, 'number_of_items': 2, 'time': "2024-01-19T13:00:00Z"}
+	data = DEFAULT_DATA.copy()
 	assert calculate_delivery_fee(data) == 200
 
 	data['cart_value'] = 800
