@@ -82,3 +82,12 @@ def test_invalid_time(client):
 
 	assert response.status_code == 400
 	assert 'error' in result
+
+
+def test_empty_json(client):
+	data = {}
+	response = client.post('/', json=data)
+	result = json.loads(response.data)
+
+	assert response.status_code == 400
+	assert 'error' in result
