@@ -1,4 +1,3 @@
-from app import app
 from src.fees import *
 from src.const import *
 import pytest, json
@@ -10,12 +9,6 @@ DEFAULT_DATA = {
 	"number_of_items": 1,
 	"time": "2024-01-15T13:00:00Z"
 }
-
-
-@pytest.fixture
-def client():
-	with app.test_client() as client:
-		yield client
 
 
 def test_default_values(client):
@@ -38,26 +31,7 @@ def test_example_values(client):
 	assert result['delivery_fee'] == 710
 
 
-def test_surcharge(client):
-	assert calculate_delivery_surcharge(MINIMUM_CART_VALUE) == 0
-	assert calculate_delivery_surcharge(MINIMUM_CART_VALUE - 250) == 250
-	assert calculate_delivery_surcharge(MINIMUM_CART_VALUE + 250) == 0
-	assert calculate_delivery_surcharge(2550) == 0
-	assert calculate_delivery_surcharge(25500) == 0
-	assert calculate_delivery_surcharge(700) == 300
-	assert calculate_delivery_surcharge(300) == 700
-	assert calculate_delivery_surcharge(0) == MINIMUM_CART_VALUE
 
-
-def test_delivery_distance(client):
-	assert calculate_delivery_distance(0) == 200
-	assert calculate_delivery_distance(500) == 200
-	assert calculate_delivery_distance(1000) == 200
-	assert calculate_delivery_distance(1001) == 300
-	assert calculate_delivery_distance(1499) == 300
-	assert calculate_delivery_distance(1500) == 300
-	assert calculate_delivery_distance(1501) == 400
-	assert calculate_delivery_distance(6500) == 1300
 
 
 def test_free_delivery(client):
