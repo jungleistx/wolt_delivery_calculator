@@ -1,4 +1,6 @@
 from app import app
+from src.fees import *
+from src.const import *
 import pytest, json
 
 
@@ -34,6 +36,17 @@ def test_example_values(client):
 	assert response.status_code == 200
 	assert 'delivery_fee' in result
 	assert result['delivery_fee'] == 710
+
+
+def test_surcharge(client):
+	assert calculate_delivery_surcharge(MINIMUM_CART_VALUE) == 0
+	assert calculate_delivery_surcharge(MINIMUM_CART_VALUE - 250) == 250
+	assert calculate_delivery_surcharge(MINIMUM_CART_VALUE + 250) == 0
+	assert calculate_delivery_surcharge(2550) == 0
+	assert calculate_delivery_surcharge(25500) == 0
+	assert calculate_delivery_surcharge(700) == 300
+	assert calculate_delivery_surcharge(300) == 700
+	assert calculate_delivery_surcharge(0) == MINIMUM_CART_VALUE
 
 
 def test_free_delivery(client):
