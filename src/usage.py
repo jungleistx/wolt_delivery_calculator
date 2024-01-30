@@ -1,5 +1,3 @@
-from flask import jsonify
-
 
 def error_wrong_method():
 	return '''
@@ -13,11 +11,3 @@ def error_wrong_method():
 	<tr><td>\'time\'</td> <td>string</td></tr>
 </table>
 '''
-
-
-def error_empty_input():
-	return jsonify({"error": "Invalid input, please provide the required fields!"})
-
-
-def error_invalid_input():
-	return jsonify({"error": "Invalid input, field(s) incorrect/missing!"})
