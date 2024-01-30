@@ -14,7 +14,7 @@
 
 ## About the project
 This is an API build for calculating delivery fees. It is a backend pre-assignment for Wolt's Summer 2024 Internship.
-https://github.com/woltapp/engineering-internship-2024
+[The assignment](https://github.com/woltapp/engineering-internship-2024)
 
 ### Technologies used :computer:
 - **[Python3](https://docs.python.org/3/)**
