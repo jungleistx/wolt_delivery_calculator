@@ -3,7 +3,7 @@ from src.fees import calculate_delivery_fee
 from src.validation import validate_cart_details
 from flask import Flask, jsonify, request
 from datetime import datetime
-
+from werkzeug.exceptions import UnsupportedMediaType
 
 app = Flask(__name__)
 
@@ -25,6 +25,9 @@ def frontpage_api():
 		delivery_fee = calculate_delivery_fee(cart_details)
 		response_data = {'delivery_fee': delivery_fee}
 		return jsonify(response_data), 200
+
+	except UnsupportedMediaType as e:
+		return jsonify({'error': str(e)}), 415
 
 	except Exception as e:
 		return jsonify({'error': str(e)}), 500
