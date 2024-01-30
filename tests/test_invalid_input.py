@@ -65,3 +65,9 @@ def test_zero_items(client):
 
 	assert response.status_code == 400
 	assert 'error' in result
+
+
+def test_wrong_method(client):
+	response = client.get('/')
+
+	assert response.status_code == 405
