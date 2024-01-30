@@ -44,3 +44,15 @@ def test_delivery_items(client):
 	assert calculate_delivery_items(15) == 670
 	assert calculate_delivery_items(25) == 1170
 
+
+def test_rushhour(client):
+	assert is_rushhour("2024-01-15T13:00:00Z") == False
+	assert is_rushhour("2024-01-15T16:00:00Z") == False
+	assert is_rushhour("2024-01-19T13:00:00Z") == False
+	assert is_rushhour("2024-01-19T15:00:00Z") == True
+	assert is_rushhour("2024-01-19T18:59:00Z") == True
+	assert is_rushhour("2024-01-15T08:00:00-05:00") == False
+	assert is_rushhour("2024-01-15T11:00:00-05:00") == False
+	assert is_rushhour("2024-01-19T08:00:00-05:00") == False
+	assert is_rushhour("2024-01-19T11:00:00-05:00") == True
+	assert is_rushhour("2024-01-19T13:59:00-05:00") == True
