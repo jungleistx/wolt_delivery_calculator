@@ -66,7 +66,6 @@ This is an API build for calculating delivery fees. It is a backend pre-assignme
 > "time": "2024-01-15T13:00:00Z"
 > }
 > ```
-:arrow_up: [Back to top](#pizza-wolt-summer-2024-engineering-internship-pizza)
 #### Field details
 
 | Field             | Type  | Description                                                               | Example value                             |
@@ -82,6 +81,7 @@ This is an API build for calculating delivery fees. It is a backend pre-assignme
 > ```bash
 > curl -X POST -H "Content-type: application/json" -d "{\"cart_value\": 790, \"delivery_distance\": 2235, \"number_of_items\": 4, \"time\": \"2024-01-15T13:00:00Z\"}" "localhost:8000"
 > ```
+:arrow_up: [Back to top](#pizza-wolt-summer-2024-engineering-internship-pizza)
 
 ## Response (JSON)
 The calculated delivery fee will be returned in JSON-format:
