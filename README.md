@@ -121,10 +121,8 @@ Rules for calculating a delivery fee
 ## Contact
 Roope Vuorenlehto
 
-[Github @jungleistx](https://github.com/jungleistx)
-
-[LinkedIn](https://www.linkedin.com/in/roope-vuorenlehto/)
-
+[Github @jungleistx](https://github.com/jungleistx) -
+[LinkedIn](https://www.linkedin.com/in/roope-vuorenlehto/) -
 [Project Link](https://github.com/jungleistx/wolt_delivery_calculator)
 
 :arrow_up: [Back to top](#pizza-wolt-summer-2024-engineering-internship-pizza)
