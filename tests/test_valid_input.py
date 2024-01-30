@@ -2,6 +2,26 @@ from app import app
 import pytest, json
 
 
+class Test_data:
+	DEFAULT_DATA = {
+		"cart_value": 1100,
+		"delivery_distance": 900,
+		"number_of_items": 1,
+		"time": "2024-01-15T13:00:00Z"
+	}
+
+	def __init__(self, cart_value, delivery_distance, number_of_items, time):
+		self.cart_value = cart_value
+		self.delivery_distance = delivery_distance
+		self.number_of_items = number_of_items
+		self.time = time
+
+	@classmethod
+	def with_custom_values(cls, **kwargs):
+		custom_data = {**cls.DEFAULT_DATA, **kwargs}
+		return cls(**custom_data)
+
+
 @pytest.fixture
 def client():
 	with app.test_client() as client:
