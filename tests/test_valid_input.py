@@ -31,17 +31,10 @@ def test_example_values(client):
 	assert result['delivery_fee'] == 710
 
 
-
-
-
 def test_free_delivery(client):
-	input = {
-		"cart_value": 20005,
-		"delivery_distance": 500,
-		"number_of_items": 1,
-		"time": "2024-01-15T13:00:00Z"
-	}
-	response = client.post('/', json=input)
+	data = DEFAULT_DATA.copy()
+	data.update({"cart_value": FREE_DELIVERY_LIMIT + 250})
+	response = client.post('/', json=data)
 	result = json.loads(response.data)
 
 	assert response.status_code == 200
