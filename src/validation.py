@@ -27,6 +27,15 @@ def validate_cart_field_types(cart):
 	return all(validations)
 
 
+def validate_cart_content_negative(cart:dict) -> bool:
+	validations = [
+		cart['cart_value'] >= 0,
+		cart['delivery_distance'] >= 0,
+		cart['time'] is not None
+	]
+	return all(validations)
+
+
 def validate_cart_details(cart_details:dict) -> bool:
 	if not cart_details:
 		return {"error": "Missing input, please provide the required fields!"}
@@ -34,4 +43,6 @@ def validate_cart_details(cart_details:dict) -> bool:
 		return {'error': 'Invalid input, field(s) missing!'}
 	if not validate_cart_field_types(cart_details):
 		return {'error': 'Invalid input, wrong field-type(s)!'}
+	if not validate_cart_content_negative(cart_details):
+		return {'error': 'Invalid input, negative/NULL value detected!'}
 	return None
