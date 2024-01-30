@@ -76,7 +76,9 @@ This is an API build for calculating delivery fees. It is a backend pre-assignme
 |number_of_items    |Integer|The __number of items__ in the customer's shopping cart.                   |__4__ (customer has 4 items in the cart)   |
 |time               |String |Order time in UTC in [ISO format](https://en.wikipedia.org/wiki/ISO_8601). |__2024-01-15T13:00:00Z__                   |
 - Payload **must** contain atleast the fields mentioned above.
-- Accepts only non-negative values as integers.
+- `cart_value` and `delivery_distance` accepts only non-negative values.
+- `number_of_items` must be atleast 1.
+- `time` must be valid ISO-format.
 > [!TIP]
 > :pencil2: Try it in terminal:
 > ```bash
