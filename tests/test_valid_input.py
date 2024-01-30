@@ -49,6 +49,17 @@ def test_surcharge(client):
 	assert calculate_delivery_surcharge(0) == MINIMUM_CART_VALUE
 
 
+def test_delivery_distance(client):
+	assert calculate_delivery_distance(0) == 200
+	assert calculate_delivery_distance(500) == 200
+	assert calculate_delivery_distance(1000) == 200
+	assert calculate_delivery_distance(1001) == 300
+	assert calculate_delivery_distance(1499) == 300
+	assert calculate_delivery_distance(1500) == 300
+	assert calculate_delivery_distance(1501) == 400
+	assert calculate_delivery_distance(6500) == 1300
+
+
 def test_free_delivery(client):
 	input = {
 		"cart_value": 20005,
