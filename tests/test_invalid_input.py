@@ -32,3 +32,15 @@ def test_missing_field(client):
 
 	assert response.status_code == 400
 	assert 'error' in result
+
+
+def test_wrong_field_type(client):
+	data = DEFAULT_DATA.copy()
+	del data['cart_value']
+	data['cart_value'] = "150"
+
+	response = client.post('/', json=data)
+	result = json.loads(response.data)
+
+	assert response.status_code == 400
+	assert 'error' in result
