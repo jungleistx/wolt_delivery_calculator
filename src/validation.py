@@ -1,3 +1,5 @@
+from datetime import datetime
+
 
 def validate_cart_keys(cart_keys:dict) -> bool:
 	keys_to_check = ['cart_value', 'delivery_distance', 'number_of_items', 'time']
@@ -32,7 +34,15 @@ def validate_cart_items(cart:dict) -> bool:
 	return True
 
 
-def validate_cart_details(cart_details:dict) -> bool:
+def validate_cart_time(time:str) -> bool:
+	try:
+		valid_date = datetime.fromisoformat(time)
+		return True
+	except:
+		return False
+
+
+def validate_cart_details(cart_details:dict) -> dict:
 	if not cart_details:
 		return {"error": "Missing input, please provide the required fields!"}
 	if not validate_cart_keys(cart_details):
@@ -43,4 +53,6 @@ def validate_cart_details(cart_details:dict) -> bool:
 		return {'error': 'Invalid input, negative/NULL value detected!'}
 	if not validate_cart_items(cart_details):
 		return {'error': 'Invalid input, minimum of 1 \'number_of_items\' required!'}
+	if not validate_cart_time(cart_details['time']):
+		return {'error': 'Invalid input, \'time\' must be in ISO-format!'}
 	return None
