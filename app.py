@@ -16,7 +16,6 @@ def frontpage_get():
 
 @app.route('/', methods=['POST'])
 def frontpage_api():
-
 	try:
 		cart_details = request.json
 		if not cart_details:
