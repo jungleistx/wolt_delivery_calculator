@@ -1,9 +1,10 @@
 from src.const import *
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 def is_rushhour(time:str) -> bool:
 	delivery_date = datetime.fromisoformat(time)
+	delivery_date = delivery_date.astimezone(timezone.utc)
 
 	if delivery_date.isoweekday() == ISO_FRIDAY:
 		if 15 <= delivery_date.hour < 19:
