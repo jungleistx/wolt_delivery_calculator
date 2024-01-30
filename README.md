@@ -6,6 +6,7 @@
 3. [Installation](#installation)
 4. [Usage](#usage)
 5. [Response](#response-json)
+   * [Response status codes](#response-status-codes)
 6. [Spesifications](#specifications-for-the-task)
 7. License :construction: `added later`
 8. [Contact](#contact)
@@ -89,6 +90,13 @@ The calculated delivery fee will be returned in JSON-format:
 OR in case of an error:
 ```json
 {"error": "error_message"}
+```
+### Response status codes
+```bash
+200 - success
+400 - invalid input
+405 - wrong method used
+500 - server error
 ```
 
 ## Specifications for the task
