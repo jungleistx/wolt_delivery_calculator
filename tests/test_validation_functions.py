@@ -65,3 +65,17 @@ def test_cart_content_negative(client):
 	data['delivery_distance'] = 100
 	data['time'] = None
 	assert validate_cart_content_negative(data) == False
+
+
+def test_cart_items(client):
+	data = DEFAULT_DATA.copy()
+	assert validate_cart_items(data) == True
+
+	data['number_of_items'] = 0
+	assert validate_cart_items(data) == False
+
+	data['number_of_items'] = -1
+	assert validate_cart_items(data) == False
+
+	data['number_of_items'] = 1
+	assert validate_cart_items(data) == True
