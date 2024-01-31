@@ -155,6 +155,10 @@ Testing
 >  <img alt="test_output_one" src="img/test_one.png" align="center">
 > </p>
 
+Example usage
+> <p align="center" border="none">
+>  <img alt="example_usage" src="img/example_usage.png" align="center">
+> </p>
 
 
 ## Contact
