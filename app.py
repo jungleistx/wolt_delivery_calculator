@@ -2,7 +2,6 @@ from src import usage
 from src.fees import calculate_delivery_fee
 from src.validation import validate_cart_details
 from flask import Flask, jsonify, request
-from datetime import datetime
 from werkzeug.exceptions import UnsupportedMediaType
 
 app = Flask(__name__)
