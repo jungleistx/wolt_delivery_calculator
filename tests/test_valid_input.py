@@ -63,6 +63,17 @@ def test_bulk_items(client):
 	assert result['delivery_fee'] == 870
 
 
+def test_1k_items(client):
+	data = DEFAULT_DATA.copy()
+	data.update({"number_of_items": 1000})
+	response = client.post('/', json=data)
+	result = json.loads(response.data)
+
+	assert response.status_code == 200
+	assert 'delivery_fee' in result
+	assert result['delivery_fee'] == 1500
+
+
 def test_rushhour(client):
 	data = DEFAULT_DATA.copy()
 	data.update({"time": "2024-01-19T16:00:00Z"})
