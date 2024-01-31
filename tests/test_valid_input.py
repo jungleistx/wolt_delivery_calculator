@@ -94,3 +94,27 @@ def test_bigger_delivery_distance(client):
 	assert response.status_code == 200
 	assert 'delivery_fee' in result
 	assert result['delivery_fee'] == 600
+
+
+def test_big_surcharge(client):
+	data = DEFAULT_DATA.copy()
+	data.update({"cart_value": 50})
+	response = client.post('/', json=data)
+	result = json.loads(response.data)
+
+	assert response.status_code == 200
+	assert 'delivery_fee' in result
+	assert result['delivery_fee'] == 1150
+
+
+def test_small_surcharge(client):
+	data = DEFAULT_DATA.copy()
+	data.update({"cart_value": 950})
+	response = client.post('/', json=data)
+	result = json.loads(response.data)
+
+	assert response.status_code == 200
+	assert 'delivery_fee' in result
+	assert result['delivery_fee'] == 250
+
+
