@@ -20,7 +20,7 @@ This is an API, build for calculating delivery fees. It is a backend pre-assignm
 :information_source: [The assignment](https://github.com/woltapp/engineering-internship-2024)
 
 ### Technologies used :computer:
-- **[Python3](https://docs.python.org/3/)**
+- **[Python (3.11.7)](https://docs.python.org/3/)**
 - **[Flask](https://flask.palletsprojects.com/en/3.0.x/)**
 
 For testing
