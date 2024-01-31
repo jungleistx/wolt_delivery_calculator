@@ -54,7 +54,7 @@ This is an API build for calculating delivery fees. It is a backend pre-assignme
 > </p>
 
 
-### 2. Open your favourite browser (optional):
+### 2. (optional) Open your favourite browser:
 > :arrow_right:  [http://localhost:8000/](http://localhost:8000/)
 
 ### 3. Send POST-request to the running program:
@@ -78,7 +78,7 @@ This is an API build for calculating delivery fees. It is a backend pre-assignme
 - Payload **must** contain atleast the fields mentioned above.
 - `cart_value` and `delivery_distance` accepts only non-negative values.
 - `number_of_items` must be atleast 1.
-- `time` must be valid ISO-format.
+- `time` must be valid ISO-format. App will convert any timezone to UTC.
 > [!TIP]
 > :pencil2: Try it in terminal:
 > ```bash
