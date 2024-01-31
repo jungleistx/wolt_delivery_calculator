@@ -38,8 +38,10 @@ For testing
 ### 1.1 (optional) Create a virtual environment:
 > This is recommended as it allows for installation of packages without affecting the system/other projects.
 > 
-> [More info on virtual environments](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
-> 
+> Make sure you have virtualenv:
+> ```bash
+> pip install virtualenv
+> ```
 > Inside the project directory:
 > ```bash
 > python3 -m venv .venv
@@ -49,6 +51,7 @@ For testing
 > ```
 > :floppy_disk: This should create a virtual environment for this project.
 > 
+> [More info on virtual environments](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
 
 ### 2. Install requirements:
 > [!IMPORTANT]
