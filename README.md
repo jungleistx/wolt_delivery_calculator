@@ -42,6 +42,9 @@ For testing
 > ```bash
 > pip install virtualenv
 > ```
+> :warning: in case of ```pip: command not found```,
+> follow these instructions: https://pip.pypa.io/en/stable/installation/ :warning:
+>
 > Inside the project directory:
 > ```bash
 > python3 -m venv .venv
@@ -58,10 +61,7 @@ For testing
 > ```bash
 > python3 -m pip install -r requirements.txt
 > ```
-> - This will ensure all the necessary tools are up-to-date
->
-> :warning: in case of ```pip: command not found```,
-> follow these instructions: https://pip.pypa.io/en/stable/installation/ :warning:
+> - This will ensure all the necessary tools are up-to-date.
 
 ## Usage
 ### 1. Write in terminal: :pencil2:
