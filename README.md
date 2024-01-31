@@ -28,6 +28,7 @@ For testing
 
 ## Installation
 ### 1. Clone the repository and navigate into it:
+> :warning: NOTE: If you have the .zip file, skip this step.
 > ```bash
 > git clone https://github.com/jungleistx/wolt_delivery_calculator.git
 >   ```
@@ -35,28 +36,35 @@ For testing
 > cd wolt_delivery_calculator
 >   ```
 
-### 1.1 (optional) Create a virtual environment:
+### 2 (optional) Create a virtual environment:
 > This is recommended as it allows for installation of packages without affecting the system/other projects.
 >
-> Make sure you have virtualenv:
+> Make sure you have virtualenv installed:
 > ```bash
 > pip install virtualenv
 > ```
 > :warning: In case of ```pip: command not found```,
-> follow these instructions: https://pip.pypa.io/en/stable/installation/
+> follow these instructions: https://pip.pypa.io/en/stable/installation/.
+> You might have to use `pip3` instead of `pip`.
 >
-> Inside the project directory:
+> Inside the project directory, create the environment:
 > ```bash
 > python3 -m venv .venv
 > ```
+> Activate the created environment:
 > ```bash
 > source .venv/bin/activate
 > ```
 > :floppy_disk: This should create a virtual environment for this project.
 >
+> When you are finished, you can leave the environment by closing the terminal or writing:
+> ```bash
+> deactivate
+> ```
+>
 > [More info on virtual environments](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
 
-### 2. Install requirements:
+### 3. Install requirements:
 > [!IMPORTANT]
 > ```bash
 > python3 -m pip install -r requirements.txt
@@ -76,10 +84,18 @@ For testing
 > </p>
 
 
-### 2. (optional) Open your favourite browser:
+### 2. (optional) Open your favourite browser (tested with Brave):
 > :arrow_right:  [http://localhost:8000/](http://localhost:8000/)
 
 ### 3. Send POST-request to the running program:
+> [!TIP]
+> :pencil2: Try it in terminal
+>
+> (different from where `app.py` is running):
+> ```bash
+> curl -X POST -H "Content-type: application/json" -d "{\"cart_value\": 790, \"delivery_distance\": 2235, \"number_of_items\": 4, \"time\": \"2024-01-15T13:00:00Z\"}" "localhost:8000"
+> ```
+>
 - :bulb:Example of a request payload (JSON):
 > ```json
 > {
@@ -89,6 +105,7 @@ For testing
 > "time": "2024-01-15T13:00:00Z"
 > }
 > ```
+
 #### Field details
 
 | Field             | Type  | Description                                                               | Example value                             |
@@ -101,20 +118,6 @@ For testing
 - `cart_value` and `delivery_distance` accepts only non-negative values.
 - `number_of_items` must be atleast 1.
 - `time` must be valid ISO-format. App will convert any timezone to UTC.
-> [!TIP]
-> :pencil2: Try it in terminal
->
-> (different from where `app.py` is running):
-> ```bash
-> curl -X POST -H "Content-type: application/json" -d "{\"cart_value\": 790, \"delivery_distance\": 2235, \"number_of_items\": 4, \"time\": \"2024-01-15T13:00:00Z\"}" "localhost:8000"
-> ```
-
-### :warning: For the virtual environment:
-> If you are using the virtual environment,
-> you can leave it by closing the terminal or writing:
-> ```bash
-> deactivate
-> ```
 
 :arrow_up: [Back to top](#pizza-wolt-summer-2024-engineering-internship-pizza)
 
