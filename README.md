@@ -38,6 +38,8 @@ For testing
 ### 1.1 (optional) Create a virtual environment:
 > This is recommended as it allows for installation of packages without affecting the system/other projects.
 > 
+> [More info on virtual environments](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
+> 
 > Inside the project directory:
 > ```bash
 > python3 -m venv .venv
