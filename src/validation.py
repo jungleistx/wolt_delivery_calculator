@@ -44,15 +44,15 @@ def validate_cart_time(time:str) -> bool:
 
 def validate_cart_details(cart_details:dict) -> dict:
 	if not cart_details:
-		return {"error": "Missing input, please provide the required fields!"}
+		return {"error": "400 Bad Request: please provide the required fields!"}
 	if not validate_cart_keys(cart_details):
-		return {'error': 'Invalid input, field(s) missing!'}
+		return {'error': '400 Bad Request: field(s) missing!'}
 	if not validate_cart_field_types(cart_details):
-		return {'error': 'Invalid input, wrong field-type(s)!'}
+		return {'error': '400 Bad Request: wrong field-type(s)!'}
 	if not validate_cart_content_negative(cart_details):
-		return {'error': 'Invalid input, negative/NULL value detected!'}
+		return {'error': '400 Bad Request: negative/NULL value detected!'}
 	if not validate_cart_items(cart_details):
-		return {'error': 'Invalid input, minimum of 1 \'number_of_items\' required!'}
+		return {'error': '400 Bad Request: minimum of 1 \'number_of_items\' required!'}
 	if not validate_cart_time(cart_details['time']):
-		return {'error': 'Invalid input, \'time\' must be in ISO-format!'}
+		return {'error': '400 Bad Request: \'time\' must be in ISO-format!'}
 	return None
