@@ -21,6 +21,8 @@ This is an API build for calculating delivery fees. It is a backend pre-assignme
 ### Technologies used :computer:
 - **[Python3](https://docs.python.org/3/)**
 - **[Flask](https://flask.palletsprojects.com/en/3.0.x/)**
+- For testing
+- **[pytest](https://docs.pytest.org/en/8.0.x/)**
 
 ## Installation
 ### 1. Clone the repository and navigate into it:
