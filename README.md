@@ -100,6 +100,7 @@ OR in case of an error:
 200 - success
 400 - invalid input
 405 - wrong method used
+415 - unsupported media type
 500 - server error
 ```
 :arrow_up: [Back to top](#pizza-wolt-summer-2024-engineering-internship-pizza)
