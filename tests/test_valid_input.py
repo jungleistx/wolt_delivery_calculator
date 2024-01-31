@@ -74,6 +74,17 @@ def test_rushhour(client):
 	assert result['delivery_fee'] == 240
 
 
+def test_rushhour_non_utc(client):
+	data = DEFAULT_DATA.copy()
+	data.update({"time": "2024-01-19T21:00:00+05:00"})
+	response = client.post('/', json=data)
+	result = json.loads(response.data)
+
+	assert response.status_code == 200
+	assert 'delivery_fee' in result
+	assert result['delivery_fee'] == 240
+
+
 def test_min_delivery_distance(client):
 	data = DEFAULT_DATA.copy()
 	data.update({"delivery_distance": 0})
