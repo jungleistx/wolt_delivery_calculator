@@ -142,12 +142,12 @@ Rules for calculating a delivery fee
 ## Screenshots
 :arrow_down:[Skip screenshots to contact information](#contact)
 
-> Browser view
+Browser view
 > <p align="center" border="none">
 >  <img alt="browser_view" src="img/browser.png" align="center">
 > </p>
 
-> Testing
+Testing
 > <p align="center" border="none">
 >  <img alt="test_output_all" src="img/test_all.png" align="center">
 > </p>
@@ -155,10 +155,6 @@ Rules for calculating a delivery fee
 >  <img alt="test_output_one" src="img/test_one.png" align="center">
 > </p>
 
-> Example usage
-> <p align="center" border="none">
->  <img alt="usage" src="img/example_usage.png" align="center">
-> </p>
 
 
 ## Contact
