@@ -36,7 +36,7 @@ This is an API build for calculating delivery fees. It is a backend pre-assignme
 ### 2. Install requirements:
 > [!IMPORTANT]
 > ```bash
-> pip install -r requirements.txt
+> python3 -m pip install -r requirements.txt
 > ```
 > - This will ensure all the necessary tools are up-to-date
 >
