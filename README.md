@@ -3,17 +3,16 @@
 ## Table of contents
 1. [About The Project](#about-the-project)
    * [Technologies used](#technologies-used-computer)
-3. [Installation](#installation)
-4. [Usage](#usage)
-5. [Response](#response-json)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [Response](#response-json)
    * [Response status codes](#response-status-codes)
-6. [How to test](#how-to-test)
-7. [Spesifications](#specifications-for-the-task)
-8. License :construction: `added later`
-9. [Screenshots](#screenshots)
-10. [Contact](#contact)
+5. [How to test](#how-to-test)
+6. [Spesifications](#specifications-for-the-task)
+7. [Screenshots](#screenshots)
+8. [License](#license)
+9. [Contact](#contact)
 
-<!-- 7. [License](#license) :construction: `added later`  -->
 
 ## About the project
 This is an API build for calculating delivery fees. It is a backend pre-assignment for Wolt's Summer 2024 Internship.
@@ -160,6 +159,8 @@ Example usage
 >  <img alt="example_usage" src="img/example_usage.png" align="center">
 > </p>
 
+## License
+[LICENSE](#license)
 
 ## Contact
 Roope Vuorenlehto
