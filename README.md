@@ -1,5 +1,6 @@
 # :pizza: Wolt Summer 2024 Engineering Internship :pizza:
 
+
 ## Table of contents
 1. [About The Project](#about-the-project)
    * [Technologies used](#technologies-used-computer)
@@ -13,15 +14,16 @@
 8. [License](#license)
 9. [Contact](#contact)
 
-
 ## About the project
-This is an API build for calculating delivery fees. It is a backend pre-assignment for Wolt's Summer 2024 Internship.
-[The assignment](https://github.com/woltapp/engineering-internship-2024)
+This is an API, build for calculating delivery fees. It is a backend pre-assignment for Wolt's Summer 2024 Internship.
+
+:information_source: [The assignment](https://github.com/woltapp/engineering-internship-2024)
 
 ### Technologies used :computer:
 - **[Python3](https://docs.python.org/3/)**
 - **[Flask](https://flask.palletsprojects.com/en/3.0.x/)**
-- For testing
+
+For testing
 - **[pytest](https://docs.pytest.org/en/8.0.x/)**
 
 ## Installation
@@ -32,6 +34,19 @@ This is an API build for calculating delivery fees. It is a backend pre-assignme
 > ```bash
 > cd wolt_delivery_calculator
 >   ```
+
+### 1.1 (optional) Create a virtual environment:
+> This is recommended as it allows for installation of packages without affecting the system/other projects.
+> 
+> Inside the project directory:
+> ```bash
+> python3 -m venv .venv
+> ```
+> ```bash
+> source .venv/bin/activate
+> ```
+> :floppy_disk: This should create a virtual environment for this project.
+> 
 
 ### 2. Install requirements:
 > [!IMPORTANT]
@@ -86,6 +101,14 @@ This is an API build for calculating delivery fees. It is a backend pre-assignme
 > ```bash
 > curl -X POST -H "Content-type: application/json" -d "{\"cart_value\": 790, \"delivery_distance\": 2235, \"number_of_items\": 4, \"time\": \"2024-01-15T13:00:00Z\"}" "localhost:8000"
 > ```
+
+### :warning: For the virtual environment:
+> If you are using the virtual environment,
+> you can leave it by closing the terminal or writing:
+> ```bash
+> deactivate
+> ```
+
 :arrow_up: [Back to top](#pizza-wolt-summer-2024-engineering-internship-pizza)
 
 ## Response (JSON)
@@ -116,6 +139,14 @@ OR run individual testfile:
 ```bash
 python3 -m pytest tests/<filename>
 ```
+Example output:
+> <p align="center" border="none">
+>  <img alt="test_output_all" src="img/test_all.png" align="center">
+> </p>
+> <p align="center" border="none">
+>  <img alt="test_output_one" src="img/test_one.png" align="center">
+> </p>
+
 :arrow_up: [Back to top](#pizza-wolt-summer-2024-engineering-internship-pizza)
 
 ## Specifications for the task
@@ -139,24 +170,15 @@ Rules for calculating a delivery fee
 :arrow_up: [Back to top](#pizza-wolt-summer-2024-engineering-internship-pizza)
 
 ## Screenshots
-:arrow_down:[Skip screenshots to contact information](#contact)
-
-Browser view
-> <p align="center" border="none">
->  <img alt="browser_view" src="img/browser.png" align="center">
-> </p>
-
-Testing
-> <p align="center" border="none">
->  <img alt="test_output_all" src="img/test_all.png" align="center">
-> </p>
-> <p align="center" border="none">
->  <img alt="test_output_one" src="img/test_one.png" align="center">
-> </p>
 
 Example usage
 > <p align="center" border="none">
 >  <img alt="example_usage" src="img/example_usage.png" align="center">
+> </p>
+
+Browser view
+> <p align="center" border="none">
+>  <img alt="browser_view" src="img/browser.png" align="center">
 > </p>
 
 ## License
