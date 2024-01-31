@@ -1,5 +1,4 @@
 Flask==3.0.1
 requests==2.31.0
 pytest==7.4.4
-python_version >= 3.11
 Werkzeug==3.0.1
