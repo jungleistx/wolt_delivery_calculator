@@ -10,7 +10,8 @@
 6. [How to test](#how-to-test)
 7. [Spesifications](#specifications-for-the-task)
 8. License :construction: `added later`
-9. [Contact](#contact)
+9. [Screenshots](#screenshots)
+10. [Contact](#contact)
 
 <!-- 7. [License](#license) :construction: `added later`  -->
 
@@ -116,6 +117,7 @@ OR run individual testfile:
 ```bash
 python3 -m pytest tests/<filename>
 ```
+:arrow_up: [Back to top](#pizza-wolt-summer-2024-engineering-internship-pizza)
 
 ## Specifications for the task
 Implement an HTTP API (single POST endpoint) which calculates the delivery fee based on the information in the request payload (JSON) and includes the calculated delivery fee in the response payload (JSON).
@@ -135,6 +137,29 @@ Rules for calculating a delivery fee
 * The delivery fee can __never__ be more than 15€, including possible surcharges.
 * The delivery is free (0€) when the cart value is equal or more than 200€.
 * During the Friday rush, 3 - 7 PM, the delivery fee (the total fee including possible surcharges) will be multiplied by 1.2x. However, the fee still cannot be more than the max (15€). Considering timezone, for simplicity, **use UTC as a timezone in backend solutions** (so Friday rush is 3 - 7 PM UTC). **In frontend solutions, use the timezone of the browser** (so Friday rush is 3 - 7 PM in the timezone of the browser).
+:arrow_up: [Back to top](#pizza-wolt-summer-2024-engineering-internship-pizza)
+
+## Screenshots
+:arrow_down:[Skip screenshots to contact information](#contact)
+
+> Browser view
+> <p align="center" border="none">
+>  <img alt="browser_view" src="img/browser.png" align="center">
+> </p>
+
+> Testing
+> <p align="center" border="none">
+>  <img alt="test_output_all" src="img/test_all.png" align="center">
+> </p>
+> <p align="center" border="none">
+>  <img alt="test_output_one" src="img/test_one.png" align="center">
+> </p>
+
+> Example usage
+> <p align="center" border="none">
+>  <img alt="usage" src="img/example_usage.png" align="center">
+> </p>
+
 
 ## Contact
 Roope Vuorenlehto
