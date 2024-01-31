@@ -2,6 +2,9 @@ from src.const import *
 from datetime import datetime, timezone
 
 
+FREE_DELIVERY = 0
+
+
 def is_rushhour(time:str) -> bool:
 	delivery_date = datetime.fromisoformat(time)
 	delivery_date = delivery_date.astimezone(timezone.utc)
@@ -47,7 +50,7 @@ def calculate_delivery_surcharge(cart_value:int) -> int:
 
 def calculate_delivery_fee(cart_details:dict) -> int:
 	if check_free_delivery(cart_details['cart_value']):
-		return 0
+		return FREE_DELIVERY
 
 	delivery_fee = 0
 	delivery_fee += calculate_delivery_surcharge(cart_details['cart_value'])
