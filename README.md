@@ -37,7 +37,7 @@ For testing
 
 ### 1.1 (optional) Create a virtual environment:
 > This is recommended as it allows for installation of packages without affecting the system/other projects.
-> 
+>
 > Make sure you have virtualenv:
 > ```bash
 > pip install virtualenv
@@ -50,7 +50,7 @@ For testing
 > source .venv/bin/activate
 > ```
 > :floppy_disk: This should create a virtual environment for this project.
-> 
+>
 > [More info on virtual environments](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
 
 ### 2. Install requirements:
@@ -102,7 +102,7 @@ For testing
 - `number_of_items` must be atleast 1.
 - `time` must be valid ISO-format. App will convert any timezone to UTC.
 > [!TIP]
-> :pencil2: Try it in terminal:
+> :pencil2: Try it in terminal (not the same where app.py is running):
 > ```bash
 > curl -X POST -H "Content-type: application/json" -d "{\"cart_value\": 790, \"delivery_distance\": 2235, \"number_of_items\": 4, \"time\": \"2024-01-15T13:00:00Z\"}" "localhost:8000"
 > ```
