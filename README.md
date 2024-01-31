@@ -167,6 +167,7 @@ Rules for calculating a delivery fee
 * The delivery fee can __never__ be more than 15€, including possible surcharges.
 * The delivery is free (0€) when the cart value is equal or more than 200€.
 * During the Friday rush, 3 - 7 PM, the delivery fee (the total fee including possible surcharges) will be multiplied by 1.2x. However, the fee still cannot be more than the max (15€). Considering timezone, for simplicity, **use UTC as a timezone in backend solutions** (so Friday rush is 3 - 7 PM UTC). **In frontend solutions, use the timezone of the browser** (so Friday rush is 3 - 7 PM in the timezone of the browser).
+
 :arrow_up: [Back to top](#pizza-wolt-summer-2024-engineering-internship-pizza)
 
 ## Screenshots
