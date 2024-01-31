@@ -42,8 +42,8 @@ For testing
 > ```bash
 > pip install virtualenv
 > ```
-> :warning: in case of ```pip: command not found```,
-> follow these instructions: https://pip.pypa.io/en/stable/installation/ :warning:
+> :warning: In case of ```pip: command not found```,
+> follow these instructions: https://pip.pypa.io/en/stable/installation/
 >
 > Inside the project directory:
 > ```bash
