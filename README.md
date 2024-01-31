@@ -160,7 +160,7 @@ Example usage
 > </p>
 
 ## License
-[LICENSE](#license)
+[LICENSE](https://github.com/jungleistx/wolt_delivery_calculator/blob/main/LICENSE)
 
 ## Contact
 Roope Vuorenlehto
