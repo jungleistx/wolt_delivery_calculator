@@ -110,6 +110,10 @@ From project root directory, write to terminal:
 ```bash
 python3 -m pytest
 ```
+OR run individual testfile:
+```bash
+python3 -m pytest tests/<filename>
+```
 
 ## Specifications for the task
 Implement an HTTP API (single POST endpoint) which calculates the delivery fee based on the information in the request payload (JSON) and includes the calculated delivery fee in the response payload (JSON).
